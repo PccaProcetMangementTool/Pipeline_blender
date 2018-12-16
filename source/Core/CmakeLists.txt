@@ -1,0 +1,75 @@
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
+#finde Python
+find_package( PythonLibs 3.5 EXACT REQUIRED )
+
+
+#Variablen setzen:
+#wichtig ist die Python Version 3.5 zu haben wegen Blender
+#Außerdem sollte man die Debug libraries mit installieren
+if (${PYTHONLIBS_FOUND})
+	set(Python_include "${PYTHON_INCLUDE_DIRS}")
+	set(Python_libs "${Python_include}/../libs")
+	message(STATUS "Python include: ${Python_include}")
+	message(STATUS "Python libs: ${Python_libs}")
+
+else ()
+	#falls Python nicht gefunden
+	message(FATAL_ERROR "Python 3.5 konnte nicht gefunden werden" )
+endif()
+
+#Unschöner Weg, aber er Funktioniert
+link_directories(${Python_libs})
+
+#Hier schreibt bitte die cpp Files rein, die die Dll haben soll
+add_library(Core SHARED 
+			src/apiClass.cpp
+			)
+
+
+
+
+get_filename_component(CORE_INCLUDE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/include/" REALPATH)
+
+#generate Header
+include(GenerateExportHeader)
+
+generate_export_header(Core)
+file(COPY "${PROJECT_BINARY_DIR}/source/Core/core_export.h" DESTINATION "${CORE_INCLUDE_PATH}")
+
+
+target_include_directories(Core 
+PUBLIC
+		$<BUILD_INTERFACE:${CORE_INCLUDE_PATH}>  
+		$<INSTALL_INTERFACE:"include">  # <prefix>/include)
+		"${PYTHON_INCLUDE_DIRS}"
+PRIVATE
+		
+		"${PROJECT_SOURCE_DIR}/extern/pybind11/include"
+		"${PROJECT_SOURCE_DIR}/extern/rapidjson/include"
+
+		
+		)
+target_link_libraries(Core ${PYTHON_LIBRARIES})
+
+
+install(TARGETS Core 
+	EXPORT CoreTargets
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib
+	RUNTIME DESTINATION bin
+	)
+
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file(
+    CoreConfigVersion.cmake
+    VERSION ${PACKAGE_VERSION}
+    COMPATIBILITY AnyNewerVersion
+    )
+
+export(TARGETS Core 
+NAMESPACE Core::
+FILE CoreTargets.cmake)
+
+configure_file(CoreConfig.cmake.in CoreConfig.cmake @ONLY)
+

@@ -1,0 +1,22 @@
+include(CMakeFindDependencyMacro)
+set(my-config-var @my-config-var@)
+find_dependency(PythonLibs 3.5 EXACT REQUIRED REQUIRED)
+
+#Variablen setzen:
+#wichtig ist die Python Version 3.5 zu haben wegen Blender
+#Auﬂerdem sollte man die Debug libraries mit installieren
+if (${PYTHONLIBS_FOUND})
+	set(Python_include "${PYTHON_INCLUDE_DIRS}")
+	set(Python_libs "${Python_include}/../libs")
+	message(STATUS "Python include: ${Python_include}")
+	message(STATUS "Python libs: ${Python_libs}")
+
+else ()
+	#falls Python nicht gefunden
+	message(FATAL_ERROR "Python 3.5 konnte nicht gefunden werden" )
+endif()
+
+link_directories(${Python_libs})
+#include_directories()
+
+include("${CMAKE_CURRENT_LIST_DIR}/CoreTargets.cmake")
