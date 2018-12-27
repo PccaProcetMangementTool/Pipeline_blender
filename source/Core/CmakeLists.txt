@@ -24,6 +24,7 @@ link_directories(${Python_libs})
 #Hier schreibt bitte die cpp Files rein, die die Dll haben soll
 add_library(Core SHARED 
 			src/apiClass.cpp
+
 			)
 
 
