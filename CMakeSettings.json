@@ -38,6 +38,19 @@
       "cmakeCommandArgs": "-D ZIEL_PROJECT=APP_TEST",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
+    },
+    {
+      "name": "x64-Debug-Main_App",
+      "generator": "Ninja",
+      "configurationType": "Debug",
+      "inheritEnvironments": [
+        "msvc_x64_x64"
+      ],
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\x64-Debug",
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\x64-Debug",
+      "cmakeCommandArgs": "-D ZIEL_PROJECT=MAIN_APP -D Qt5_DIR=F:/pogramme/QtCreator/5.12.0/msvc2017_64/lib/cmake/Qt5",
+      "buildCommandArgs": "-v",
+      "ctestCommandArgs": ""
     }
 
   ]
