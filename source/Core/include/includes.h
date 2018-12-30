@@ -10,3 +10,9 @@
 #ifdef _DEBUG_WAS_DEFINED
 #define _DEBUG 1
 #endif
+#include <string>
+#include <vector>
+#include <array>
+#include <iostream>
+#include <pybind11/pybind11.h>
+#include <pybind11/embed.h>

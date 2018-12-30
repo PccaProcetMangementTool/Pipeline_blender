@@ -4,7 +4,7 @@ find_dependency(PythonLibs 3.5 EXACT REQUIRED REQUIRED)
 
 #Variablen setzen:
 #wichtig ist die Python Version 3.5 zu haben wegen Blender
-#Außerdem sollte man die Debug libraries mit installieren
+#Auï¿½erdem sollte man die Debug libraries mit installieren
 if (${PYTHONLIBS_FOUND})
 	set(Python_include "${PYTHON_INCLUDE_DIRS}")
 	set(Python_libs "${Python_include}/../libs")
@@ -18,5 +18,9 @@ endif()
 
 link_directories(${Python_libs})
 #include_directories()
+#find_dependency(pybind11 REQUIRED)
 
 include("${CMAKE_CURRENT_LIST_DIR}/CoreTargets.cmake")
+
+
+target_link_libraries(Core::Core INTERFACE pybind11::embed)
