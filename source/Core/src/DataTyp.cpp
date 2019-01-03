@@ -1,14 +1,14 @@
 #pragma once
 #include "DataTyp.h"
-
+#include "MainData.h"
 namespace pipeline
 {
-
+class MainData;
 DataTyp::DataTyp(std::string PythonScriptFile,
 				 std::vector<std::string> *add_to_cache,
-				 rapidjson::Document *json_doc)
+				 rapidjson::Document *json_doc, MainData* Instanze)
 {
-
+	this->Instanze=Instanze;
 	//std::vector<std::string> *add_to_cache;
 	if(!json_doc->IsObject())
 	{

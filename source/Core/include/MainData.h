@@ -8,6 +8,7 @@ namespace pipeline
 {
 //forward delcarationen
 class DataObject;
+class DataTyp;
 
 class MainData
 {
@@ -21,6 +22,7 @@ public:
   MainData(std::string LokalPath, std::string CloudPath);
   DataTyp *newDataTyp(std::vector<std::string> *add_to_cache,
                       std::string ScriptName);
+  DataObject *newDataObject();
 };
 } // namespace pipeline
 #endif
