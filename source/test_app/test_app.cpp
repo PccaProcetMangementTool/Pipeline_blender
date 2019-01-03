@@ -5,6 +5,7 @@ int main(int argc, char *argv[])
 {
 	try
 	{
+		pybind11::scoped_interpreter guard{};
 		apiClass test;
 		test.test_core_dll();
 		

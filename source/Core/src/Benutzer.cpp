@@ -1,9 +1,9 @@
+#pragma once
 #include "Benutzer.hpp"
 
 using namespace std;
 Benutzer::Benutzer()
 {
-
 }
 
 void Benutzer::setname(string nam)

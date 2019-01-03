@@ -2,9 +2,11 @@
     //"cmake.configureSettings": {"ZIEL_PROJECT":}
     //"cmake.configureSettings": {"ZIEL_PROJECT":}
     "cmake.configureSettings": {"ZIEL_PROJECT":
-                                //"MAIN_APP"
-                                "CORE"
-                                //"APP_TEST"
+        "CORE"
+        /*
+        "APP_TEST"
+        "MAIN_APP"
+                                */
                                 ,
                                 "Qt5_DIR":"F:/pogramme/QtCreator/5.12.0/msvc2017_64/lib/cmake/Qt5"
                             },
@@ -68,6 +70,8 @@
                                 "unordered_set": "cpp",
                                 "complex": "cpp",
                                 "deque": "cpp",
-                                "sstream": "cpp"
+                                "sstream": "cpp",
+                                "ctime": "cpp",
+                                "fstream": "cpp"
                             }
 }

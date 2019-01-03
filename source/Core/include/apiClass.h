@@ -1,7 +1,8 @@
 #pragma once
 
-#include "includes.h"
-#include "core_export.h"
+//#include "includes.h"
+//#include "core_export.h"
+#include "MainData.h"
 class CORE_EXPORT apiClass {
 	/*
 	In dieser Klasse sind alle Exportierten Funktionen exportiert
@@ -11,4 +12,5 @@ public:
 	apiClass();
 	~apiClass();
 	void test_core_dll();
+	
 };

@@ -22,12 +22,19 @@ endif()
 link_directories(${Python_libs})
 
 #Hier schreibt bitte die cpp Files rein, die die Dll haben soll
+FILE(GLOB SRCFILES 
+		"${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 add_library(Core SHARED 
+			${SRCFILES}
+#[=[
 			src/apiClass.cpp
 			src/DataObject.cpp
 			src/DataTyp.cpp
+			src/pipeline_utilis.cpp
+#]=]
 			#src/test.cpp
 			)
+message(STATUS "SRC Files sind ${SRCFILES}")
 
 
 target_link_libraries(Core PRIVATE pybind11::embed)
@@ -47,11 +54,12 @@ PUBLIC
 		$<BUILD_INTERFACE:${CORE_INCLUDE_PATH}>  
 		$<INSTALL_INTERFACE:"include">  # <prefix>/include)
 		"${PYTHON_INCLUDE_DIRS}"
-		#"${PROJECT_SOURCE_DIR}/extern/pybind11/include"
-PRIVATE
-		
-		
 		"${PROJECT_SOURCE_DIR}/extern/rapidjson/include"
+		#"${PROJECT_SOURCE_DIR}/extern/pybind11/include"
+#PRIVATE
+		
+		
+		
 
 		
 		)
