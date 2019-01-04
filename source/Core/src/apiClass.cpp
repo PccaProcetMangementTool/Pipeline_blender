@@ -10,9 +10,11 @@ void apiClass::test_core_dll()
 	Die Funktion wird dann von der test_app.exe aufgerufen
 	*/
 
-	pipeline::MainData Instanze = pipeline::MainData("H:\\dev\\Pipeline\\tests\\Data\\Lokal", "H:\\dev\\Pipeline\\tests\\Data\\Cloud");
+	pipeline::MainData Instanze = pipeline::MainData("C:\\Users\\an-li\\Christian\\PipelineData\\Lokal",
+	"C:\\Users\\an-li\\Christian\\PipelineData\\Cloud");
 	std::vector<std::string> add_to_cache;
-	pipeline::DataTyp *Allgemein_Data = Instanze.newDataTyp(&add_to_cache, "Allgemeines_Script.py");
+	pipeline::DataTyp *Scene = Instanze.newDataTyp(&add_to_cache, "Scene.py");
+	pipeline::DataTyp *Shoot = Instanze.newDataTyp(&add_to_cache, "Shoot.py");
 	
 }
 apiClass::apiClass()

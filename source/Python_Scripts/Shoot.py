@@ -37,7 +37,7 @@ def erstellen(Name,Inputlist,root,Lokal_Pc_Cache):
     print(cmdcommand1)
     subprocess.Popen(cmdcommand1)
     #subprocess.Popen([jdata["Blender Path"],Speicherort+"\\"+Name+".blend"])
-
+    return Speicherort
 
 
 

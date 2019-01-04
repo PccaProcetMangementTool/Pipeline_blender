@@ -42,7 +42,11 @@ DataObject *DataObject::erstellen(const DataTyp *type,
 	}
 	std::string PC_Lokal_Cache = type->Instanze->LokalPath + "\\Lokal_Cache\\Pc_Path_Cache.json";
 
-	type->Script.attr("erstellen")(Name, input_list, type->Instanze->LokalPath, PC_Lokal_Cache);
+	py::object PyMainDirPath = type->Script.attr("erstellen")(Name, input_list,
+															  type->Instanze->LokalPath,
+															  PC_Lokal_Cache);
+	newobj=PyMainDirPath.cast<std::string>();
+
 	return newobj;
 }
 
